@@ -10,4 +10,3 @@ class CategoryAdmin(admin.ModelAdmin):
         '__str__',
     )
     search_fields = ['id']
-
