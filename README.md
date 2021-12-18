@@ -67,35 +67,42 @@ What is the correct CustomQuerySet implementation?
 - i.
 ```
 class CustomQuerySet(QuerySet):
-def delete(self): self.update(active=False)
-def delete_real(self): super(CustomQuerySet, self).delete_real()
+    def delete(self): 
+        self.update(active=False)
+    def delete_real(self): 
+        super(CustomQuerySet, self).delete_real()
 ```
 - ii.
 ```
 class CustomQuerySet(QuerySet):
-def delete(self): self.update(active=False)
-def delete_real(self): super(CustomQuerySet, self).delete()
+    def delete(self):
+        self.update(active=False)
+    def delete_real(self): 
+        super(CustomQuerySet, self).delete()
 ```
 - iii.
 ```
 class CustomQuerySet(QuerySet):
-def delete(self): self.active = False
-def delete_real(self):
-super(CustomQuerySet, self).delete()
+    def delete(self):
+        self.active = False
+    def delete_real(self):
+        super(CustomQuerySet, self).delete()
 ```
 - iv.
 ```
 class CustomQuerySet(QuerySet):
-def delete(self): self.active = False
-def delete_real(self): super(CustomQuerySet, self).delete_real()
+    def delete(self): 
+        self.active = False
+    def delete_real(self): 
+        super(CustomQuerySet, self).delete_real()
 ```
 
 ##3.
 Suppose we have model:
 ```
 class Person(models.Model):
-name = models.CharField('Item', max_length=100) birthday =
-models.DateField(...)
+    name = models.CharField('Item', max_length=100) 
+    birthday = models.DateField(...)
 ```
 We want to define a model field “birthday” such that django admin
 interface doesn't allow this field to be empty, but we can create persons
