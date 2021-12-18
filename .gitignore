@@ -6,3 +6,4 @@ venv
 
 # python cache files
 __pycache__
+# разрешаем для ТЗ /task2/db.sqlite3
