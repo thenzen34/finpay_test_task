@@ -1,4 +1,11 @@
 ## for run
+- create virtual env
+
+- install
+```
+pip3 install -r requirements.txt
+```
+- run
 ```
 ./run.sh
 ```
