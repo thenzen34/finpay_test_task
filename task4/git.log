@@ -1,0 +1,14 @@
+git checkout -b feature_1
+
+touch 1.txt
+git add 1.txt
+git commit -m 'first'
+
+touch 2.txt
+git add 2.txt
+git commit -m 'second'
+
+git reset --soft HEAD~1
+
+git checkout master
+git merge feature_1

@@ -1,0 +1,20 @@
+результат в task2/django_task/models/product
+
+items = id brand_id
+
+item_discount = start_dt end_dt item_id
+brand_discount = start_dt end_dt brand_id
+user_discount = start_dt end_dt user_id
+
+select t.*, max_product_discount, max_category_discount from django_task_product as t
+left join (
+    select max(discount) as max_product_discount, product_id from django_task_productdiscount
+    where date_begin >= '2021-12-01' and date_end < ' 2022-01-01'
+    group by product_id
+    ) t1 on t1.product_id = t.id
+left join (
+    select max(discount) as max_category_discount, category_id from django_task_categorydiscount
+    where date_begin >= '2021-12-01' and date_end < ' 2022-01-01'
+    group by category_id
+    ) t2 on t2.category_id = t.category_id
+where t.id in (1, 2, 3, 4, 5)
